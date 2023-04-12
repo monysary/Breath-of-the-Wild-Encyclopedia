@@ -2,6 +2,8 @@ import { theme } from "../../App";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import rupee from '../../images/green-rupee.png'
 
+import Navbar from "./Navbar";
+
 function Header() {
     const heartValues = [1, 1, 1, 1, 1, 0]
 
@@ -23,15 +25,12 @@ function Header() {
                     }
                 })}
             </div>
-            <div style={{
-                display: 'flex',
-                flexDirection: 'row',
-                flexWrap: 'nowrap',
-                alignItems: 'center',
+            <Navbar />
+            <div className="flexAlignCenter" style={{
                 gap: '10px'
             }}>
                 <img src={rupee} height='40px' />
-                <div style={{ fontFamily: 'RocknRoll One', fontSize: '20px', color: theme.color.white }}>1,127</div>
+                <div style={{ fontFamily: theme.font.tertiary, fontSize: '20px', color: theme.color.white }}>1,127</div>
             </div>
         </header>
     )

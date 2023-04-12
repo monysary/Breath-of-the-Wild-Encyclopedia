@@ -13,7 +13,9 @@ export const theme = {
     metallicSeaweed: '#2B8091',
   },
   font: {
-    primary: 'The Wild Breath of Zelda'
+    primary: 'The Wild Breath of Zelda',
+    secondary: 'Noto Sans JP',
+    tertiary: 'RocknRoll One',
   }
 }
 
