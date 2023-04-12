@@ -1,11 +1,15 @@
+import { theme } from "../../App";
+
 function Header() {
     return (
-        <div style={{
-            fontFamily: 'The Wild Breath of Zelda',
-            color: 'white'
+        <h1 style={{
+            fontFamily: theme.font.primary,
+            color: theme.color.yellow,
+            backgroundColor: `${theme.color.black}CC`,
+            height: '100px',
         }}>
-            Breath of the Wild Encyclopedia
-        </div>
+            The BOTW Encyclopedia
+        </h1>
     )
 }
 

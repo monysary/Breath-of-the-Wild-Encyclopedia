@@ -4,15 +4,14 @@ import Header from "./components/Header";
 
 function Homepage() {
     return (
-        <div style={{
+        <header style={{
             height: '100vh',
             backgroundImage: `url(${background})`,
-            backgroundSize: 'cover'
-
+            backgroundSize: 'cover',
         }} 
         >
             <Header />
-        </div>
+        </header>
     )
 }
 
