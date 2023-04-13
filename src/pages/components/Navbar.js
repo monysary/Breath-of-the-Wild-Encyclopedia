@@ -31,9 +31,11 @@ function Navbar() {
         textTransform: 'none'
     }
 
+    
+
     return (
         <div className="flexAlignCenter" style={{
-            gap: '50px'
+            gap: '50px',
         }}>
             <Button disableRipple sx={[buttonStyle, {
                 '&::after': {
