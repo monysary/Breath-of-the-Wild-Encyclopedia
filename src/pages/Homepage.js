@@ -12,14 +12,14 @@ function Homepage() {
     // fetchMonsters()
 
     return (
-        <header style={{
+        <div style={{
             height: '100vh',
             backgroundImage: `url(${background})`,
             backgroundSize: 'cover',
         }} 
         >
             <Header />
-        </header>
+        </div>
     )
 }
 

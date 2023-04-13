@@ -20,7 +20,7 @@ function Header() {
     }, [])
 
     return (
-        <header style={{
+        <div style={{
             backgroundColor: `${theme.color.black}AA`,
             height: '100px',
             display: 'flex',
@@ -47,7 +47,7 @@ function Header() {
                 <img src={rupee} height='40px' />
                 <div style={{ fontFamily: theme.font.tertiary, fontSize: '20px', color: theme.color.white }}>1,127</div>
             </div>
-        </header>
+        </div>
     )
 }
 

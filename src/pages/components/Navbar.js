@@ -31,8 +31,6 @@ function Navbar() {
         textTransform: 'none'
     }
 
-    
-
     return (
         <div className="flexAlignCenter" style={{
             gap: '50px',
