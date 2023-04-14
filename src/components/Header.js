@@ -1,6 +1,6 @@
-import { theme } from "../../App";
+import { theme } from "../utils/theme";
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import rupee from '../../images/green-rupee.png'
+import rupee from '../images/green-rupee.png'
 
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
@@ -26,7 +26,8 @@ function Header() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: matches ? 'space-between' : 'center',
-            padding: '0 50px'
+            padding: '0 50px',
+            marginBottom: matches ? '70px' : '40px'
         }}>
             <div style={{
                 display: matches ? 'block' : 'none'
@@ -44,7 +45,7 @@ function Header() {
                 gap: '10px',
                 display: matches ? 'flex' : 'none'
             }}>
-                <img src={rupee} height='40px' />
+                <img src={rupee} alt="green rupee" height='40px' />
                 <div style={{ fontFamily: theme.font.tertiary, fontSize: '20px', color: theme.color.white }}>1,127</div>
             </div>
         </div>

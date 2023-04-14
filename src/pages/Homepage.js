@@ -1,15 +1,11 @@
 import background from '../images/The-Art-of-The-Legend-of-Zelda-Breath-of-the-Wild-3.jpg'
 
-import Header from "./components/Header";
+import Header from "../components/Header";
+import MainMenu from '../components/MainMenu';
 
-import { fetchEquipment, fetchMaterials, fetchTreasure, fetchCreatures, fetchMonsters } from '../utils/botwApi';
+// import { fetchEquipment, fetchMaterials, fetchTreasure, fetchCreatures, fetchMonsters } from '../utils/botwApi';
 
 function Homepage() {
-    // fetchEquipment()
-    // fetchMaterials()
-    // fetchTreasure()
-    // fetchCreatures()
-    // fetchMonsters()
 
     return (
         <div style={{
@@ -19,6 +15,7 @@ function Homepage() {
         }} 
         >
             <Header />
+            <MainMenu />
         </div>
     )
 }

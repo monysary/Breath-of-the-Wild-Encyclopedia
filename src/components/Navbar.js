@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {
     Button
 } from '@mui/material'
-import { theme } from "../../App";
+import { theme } from "../utils/theme";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 function Navbar() {
