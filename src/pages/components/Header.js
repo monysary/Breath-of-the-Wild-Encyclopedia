@@ -22,7 +22,7 @@ function Header() {
     return (
         <div style={{
             backgroundColor: `${theme.color.black}AA`,
-            height: '100px',
+            height: matches ? '100px' : '70px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: matches ? 'space-between' : 'center',
