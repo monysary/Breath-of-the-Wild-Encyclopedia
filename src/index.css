@@ -17,3 +17,12 @@ body {
     align-items: center;
     flex-wrap: nowrap;
 }
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #313639AA;
+    border-radius: 6px;
+}

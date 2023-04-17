@@ -36,16 +36,23 @@ function MainMenu() {
 
     return (
         <div style={{
-            border: '2px solid green',
             margin: '0 100px',
             height: '70vh',
-            overflow: 'auto'
+            overflow: 'auto',
         }}>
             {menu.map((item) => {
                 if (loading) {
                     return <CircularProgress />
                 } else {
-                    return <img key={item.id} alt="image" src={item.image} width='100px' />
+                    return <img
+                        key={item.id}
+                        alt="image"
+                        src={item.image}
+                        style={{
+                            width: '100px',
+                            margin: '5px'
+                        }}
+                    />
                 }
             })}
         </div>
