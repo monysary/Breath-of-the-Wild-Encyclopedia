@@ -1,13 +1,12 @@
 import axios from "axios";
-import { CircularProgress } from '@mui/material';
 import { useContext, useEffect, useState } from "react";
 
 import { CategoryContext } from "../pages/Homepage";
+import ItemCard from "./ItemCard";
 
 function MainMenu() {
     const [categories, category, setCategory] = useContext(CategoryContext)
     const [menu, setMenu] = useState([])
-    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const BOTWData = async () => {
@@ -15,35 +14,31 @@ function MainMenu() {
                 const res = await axios.get(
                     `https://botw-compendium.herokuapp.com/api/v2/category/${categories[category].toLowerCase()}`
                 )
-                switch (categories[category]) {
-                    case 'Creatures':
-                        setMenu([...res.data.data.food, ...res.data.data.non_food])
-                        break;
-                    default:
-                        setMenu(res.data.data)
-                        break;
+                if (categories[category] === 'Creatures') {
+                    setMenu([...res.data.data.food, ...res.data.data.non_food])
+                } else {
+                    setMenu(res.data.data)
                 }
-                setLoading(false)
             } catch (err) {
                 console.log(err);
             }
         }
 
-        setLoading(true)
         BOTWData()
 
     }, [category])
 
     return (
         <div style={{
-            margin: '0 100px',
-            height: '70vh',
-            overflow: 'auto',
+            padding: '0 100px',
+            display: 'flex',
+
         }}>
-            {menu.map((item) => {
-                if (loading) {
-                    return <CircularProgress />
-                } else {
+            <div style={{
+                height: '70vh',
+                overflow: 'auto',
+            }}>
+                {menu.map((item) => {
                     return <img
                         key={item.id}
                         alt="image"
@@ -53,8 +48,9 @@ function MainMenu() {
                             margin: '5px'
                         }}
                     />
-                }
-            })}
+                })}
+            </div>
+            <ItemCard />
         </div>
     )
 }

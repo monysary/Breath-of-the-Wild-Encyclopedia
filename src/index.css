@@ -20,9 +20,10 @@ body {
 
 ::-webkit-scrollbar {
     width: 6px;
+    height: 0px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #313639AA;
+    background: #fdffe0AA;
     border-radius: 6px;
 }

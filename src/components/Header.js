@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import { MediaQueryContext } from "../App";
 
 function Header() {
-    const heartValues = [1, 1, 1, 1, 1, 0]
+    const heartValues = [1, 2, 3, 4, 5, 0]
 
     const [matches, setMatches, breakPoint] = useContext(MediaQueryContext)
 
@@ -32,10 +32,10 @@ function Header() {
                 display: matches ? 'block' : 'none'
             }}>
                 {heartValues.map((heart) => {
-                    if (heart === 1) {
-                        return <FavoriteIcon sx={{ color: theme.color.red }} />
+                    if (heart != 0) {
+                        return <FavoriteIcon key={heart} sx={{ color: theme.color.red }} />
                     } else {
-                        return <FavoriteIcon sx={{ color: theme.color.brown }} />
+                        return <FavoriteIcon key={heart} sx={{ color: theme.color.brown }} />
                     }
                 })}
             </div>
