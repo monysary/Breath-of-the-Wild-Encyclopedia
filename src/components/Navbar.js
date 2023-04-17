@@ -1,21 +1,14 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import {
     Button
 } from '@mui/material'
 import { theme } from "../utils/theme";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
-import { Context } from '../App';
+import { MediaQueryContext } from '../App';
+import { CategoryContext } from '../pages/Homepage';
 
 function Navbar() {
-    const categories = [
-        'Equipment',
-        'Materials',
-        'Treasure',
-        'Creatures',
-        'Monsters',
-    ]
-
-    const [category, setCategory] = useState(0)
+    const [categories, category, setCategory] = useContext(CategoryContext)
 
     const arrowIconStyle = {
         fontSize: '40px',
@@ -32,7 +25,7 @@ function Navbar() {
         textTransform: 'none'
     }
 
-    const [matches, setMatches, breakPoint] = useContext(Context)
+    const [matches, setMatches, breakPoint] = useContext(MediaQueryContext)
 
     useEffect(() => {
         window.matchMedia(breakPoint)

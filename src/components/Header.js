@@ -4,12 +4,12 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import rupee from '../images/green-rupee.png'
 
 import Navbar from "./Navbar";
-import { Context } from "../App";
+import { MediaQueryContext } from "../App";
 
 function Header() {
     const heartValues = [1, 1, 1, 1, 1, 0]
 
-    const [matches, setMatches, breakPoint] = useContext(Context)
+    const [matches, setMatches, breakPoint] = useContext(MediaQueryContext)
 
     useEffect(() => {
         window.matchMedia(breakPoint)

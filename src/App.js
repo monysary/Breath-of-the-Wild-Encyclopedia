@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Homepage from "./pages/Homepage";
 
-export const Context = React.createContext()
+export const MediaQueryContext = React.createContext()
 
 function App() {
 
@@ -12,9 +12,9 @@ function App() {
   )
 
   return (
-    <Context.Provider value={[matches, setMatches, breakPoint]}>
+    <MediaQueryContext.Provider value={[matches, setMatches, breakPoint]}>
       <Homepage />
-    </Context.Provider>
+    </MediaQueryContext.Provider>
   );
 }
 
