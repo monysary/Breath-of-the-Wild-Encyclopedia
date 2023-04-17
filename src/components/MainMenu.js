@@ -1,42 +1,33 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { CategoryContext } from "../pages/Homepage";
 
-import {
-    fetchEquipment,
-    fetchMaterials,
-    fetchTreasure,
-    fetchCreatures,
-    fetchMonsters
-} from "../utils/botwApi";
+import axios from "axios";
 
 function MainMenu() {
     const [categories, category, setCategory] = useContext(CategoryContext)
+    const [menu, setMenu] = useState()
 
     useEffect(() => {
-        switch (categories[category]) {
-            case 'Equipment':
-                fetchEquipment()
-                break;
-            case 'Materials':
-                fetchMaterials()
-                break;
-            case 'Treasure':
-                fetchTreasure()
-                break;
-            case 'Creatures':
-                fetchCreatures()
-                break;
-            case 'Monsters':
-                fetchMonsters()
-                break;
+        const BOTWData = async () => {
+            try {
+                const res = await axios.get(
+                    `https://botw-compendium.herokuapp.com/api/v2/category/${categories[category].toLowerCase()}`
+                )
+                console.log(res);
+            } catch (err) {
+                console.log(err);
+            }
         }
+
+        BOTWData()
+
     }, [category])
 
     return (
         <div style={{
             border: '2px solid green',
-
+            margin: '0 100px',
         }}>
 
         </div>
