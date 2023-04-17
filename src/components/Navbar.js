@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import {
     Button
 } from '@mui/material'
 import { theme } from "../utils/theme";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import { Context } from '../App';
 
 function Navbar() {
     const categories = [
@@ -31,16 +32,14 @@ function Navbar() {
         textTransform: 'none'
     }
 
-    const [matches, setMatches] = useState(
-        window.matchMedia('(min-width: 600px)').matches
-    )
+    const [matches, setMatches, breakPoint] = useContext(Context)
 
     useEffect(() => {
-        window.matchMedia('(min-width: 600px)')
+        window.matchMedia(breakPoint)
             .addEventListener('change', (event) => {
                 setMatches(event.matches)
             })
-    }, [])
+    })
 
     return (
         <div className="flexAlignCenter" style={{

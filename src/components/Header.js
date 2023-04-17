@@ -1,23 +1,22 @@
+import { useEffect, useContext } from "react";
 import { theme } from "../utils/theme";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import rupee from '../images/green-rupee.png'
 
 import Navbar from "./Navbar";
-import { useEffect, useState } from "react";
+import { Context } from "../App";
 
 function Header() {
     const heartValues = [1, 1, 1, 1, 1, 0]
 
-    const [matches, setMatches] = useState(
-        window.matchMedia('(min-width: 768px)').matches
-    )
+    const [matches, setMatches, breakPoint] = useContext(Context)
 
     useEffect(() => {
-        window.matchMedia(`(min-width: 768px)`)
+        window.matchMedia(breakPoint)
             .addEventListener('change', (event) => {
                 setMatches(event.matches)
             })
-    }, [])
+    })
 
     return (
         <div style={{
