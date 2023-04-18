@@ -74,6 +74,16 @@ function ItemCard({ selected }) {
                         selected?.description :
                         'Unknown'
                 }</div>
+            {/* -----Treasure Drops----- */}
+            <div style={{
+                margin: '5px 0 0 0',
+                display: selected?.category === 'treasure' ? 'block' : 'none'
+            }}>
+                Drops: {
+                    selected?.drops !== undefined ?
+                        capitalize(selected?.drops.join(' ')).split(' ').join(', ')
+                        : ''
+                }</div>
         </div>
     )
 }
