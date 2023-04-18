@@ -83,29 +83,50 @@ function ItemCard({ selected }) {
                         selected?.description
                         : 'Unknown'
                 }</div>
-            {/* -----Treasure Drops----- */}
-            {selected?.category === 'treasure' && <div style={{
+            {/* -----Drops----- */}
+            {selected?.category === 'treasure' ? <div style={{
                 margin: '5px 0 0 0',
-            }}>
-                Drops: {capitalize(selected?.drops.join(' ')).split(' ').join(', ')}
-            </div>}
-            {/* -----Creature Drops----- */}
-            {selected?.category === 'creatures' && <div style={{
-                margin: '5px 0 0 0',
-                display: selected?.drops !== undefined ? 'block' : 'none'
             }}>
                 Drops: {
-                    selected?.drops ?
+                    selected?.drops &&
+                    selected?.drops.map((drop) => {
+                        if (selected?.drops.indexOf(drop) === selected?.drops.length - 1) {
+                            return capitalize(drop)
+                        } else {
+                            return `${capitalize(drop)}, `
+                        }
+                    })}
+            </div>
+                : selected?.category === 'monsters' ? <div style={{
+                    margin: '5px 0 0 0',
+                }}>
+                    Drops: {
+                        selected?.drops &&
                         selected?.drops.map((drop) => {
                             if (selected?.drops.indexOf(drop) === selected?.drops.length - 1) {
                                 return capitalize(drop)
                             } else {
                                 return `${capitalize(drop)}, `
                             }
-                        })
-                        : 'None'
-                }
-            </div>}
+                        })}
+                </div>
+                    : selected?.category === 'creatures' && <div style={{
+                        margin: '5px 0 0 0',
+                        display: selected?.drops !== undefined ? 'block' : 'none'
+                    }}>
+                        Drops: {
+                            selected?.drops ?
+                                selected?.drops.map((drop) => {
+                                    if (selected?.drops.indexOf(drop) === selected?.drops.length - 1) {
+                                        return capitalize(drop)
+                                    } else {
+                                        return `${capitalize(drop)}, `
+                                    }
+                                })
+                                : 'None'
+                        }
+                    </div>
+            }
         </div>
     )
 }
