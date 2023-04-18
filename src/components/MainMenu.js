@@ -54,9 +54,9 @@ function MainMenu() {
                         style={{
                             width: '100px',
                             height: '100px',
-                            padding: '5px',
+                            padding: '3px',
                             cursor: 'pointer',
-                            border: selected?.id === item?.id ? `3px solid ${theme.color.white}` : 'none'
+                            border: selected?.id === item?.id ? `3px solid ${theme.color.white}` : `3px solid ${theme.color.white}00`
                         }}
                         onClick={() => {
                             setSelected(item)
