@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { CategoryContext } from "../pages/Homepage";
 import ItemCard from "./ItemCard";
 
+import { theme } from "../utils/theme";
+
 function MainMenu() {
     const [categories, category] = useContext(CategoryContext)
     const [menu, setMenu] = useState([])
@@ -33,14 +35,16 @@ function MainMenu() {
 
     return (
         <div style={{
-            padding: '0 100px',
+            padding: '5px 100px',
+            backgroundColor: `${theme.color.black}AA`,
             display: 'flex',
-
         }}>
             <div style={{
                 height: '70vh',
-                width: '50%',
+                width: '60%',
                 overflow: 'auto',
+                display: 'flex',
+                flexWrap: 'wrap'
             }}>
                 {menu.map((item) => {
                     return <img
@@ -49,8 +53,9 @@ function MainMenu() {
                         src={item.image}
                         style={{
                             width: '100px',
-                            margin: '5px',
-                            cursor: 'pointer'
+                            padding: '5px',
+                            cursor: 'pointer',
+                            border: selected?.id === item?.id ? `3px solid ${theme.color.white}` : 'none'
                         }}
                         onClick={() => {
                             setSelected(item)
