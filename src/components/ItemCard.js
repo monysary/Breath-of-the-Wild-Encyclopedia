@@ -7,7 +7,8 @@ function ItemCard({ selected }) {
             width: '40%',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'stretch'
+            alignItems: 'stretch',
+            padding: '0 20px'
         }}>
             <div style={{
                 padding: '5px',
@@ -18,9 +19,17 @@ function ItemCard({ selected }) {
                 fontFamily: theme.font.secondary,
                 color: theme.color.white,
                 fontSize: '25px',
-                padding: '0 20px'
+                padding: '0 0 5px 0',
+                borderBottom: `1px solid ${theme.color.white}77`
             }}>
                 {capitalize(selected?.name)}
+            </div>
+            <div style={{
+                fontFamily: theme.font.secondary,
+                color: theme.color.white,
+                margin: '5px 0 0 0'
+            }}>
+                {selected?.description}
             </div>
         </div>
     )
