@@ -1,26 +1,43 @@
+import { useContext, useEffect } from 'react';
+
 import { theme } from '../utils/theme'
 import { capitalize } from "../utils/helpers";
 
+import { MediaQueryContext } from '../App';
+
 function ItemCard({ selected }) {
+    const [matches, setMatches, breakPoint] = useContext(MediaQueryContext)
+
+    useEffect(() => {
+        window.matchMedia(breakPoint)
+            .addEventListener('change', (event) => {
+                setMatches(event.matches)
+            })
+    })
 
     return (
         <div style={{
-            width: '40%',
+            width: matches && '40%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'stretch',
-            padding: '0 20px',
+            padding: matches && '0 20px',
             fontFamily: theme.font.secondary,
             color: theme.color.white,
+            marginBottom: '10px'
         }}>
             <div style={{
                 padding: '5px',
             }}>
-                <img alt="item" src={selected?.image} style={{ margin: '0 auto' }} />
+                <img alt="item" src={selected?.image} style={{
+                    margin: '0 auto',
+                    width: !matches && '200px',
+                    height: !matches && '200px'
+                }} />
             </div>
             {/* -----Name----- */}
             <div style={{
-                fontSize: '25px',
+                fontSize: matches ? '25px' : '18px',
                 padding: '0 0 5px 0',
                 borderBottom: `1px solid ${theme.color.white}77`
             }}>
@@ -30,6 +47,7 @@ function ItemCard({ selected }) {
             <div className='flexAlignCenter' style={{
                 margin: '5px 0 0 0',
                 gap: '10px',
+                fontSize: !matches && '14px'
             }}>
                 {selected?.category === 'equipment' &&
                     <div className='statusBox'>
@@ -68,6 +86,7 @@ function ItemCard({ selected }) {
             {/* -----Location----- */}
             <div style={{
                 margin: '5px 0 0 0',
+                fontSize: !matches && '14px',
             }}>
                 Location: {
                     selected?.common_locations !== null ?
@@ -76,7 +95,8 @@ function ItemCard({ selected }) {
                 }</div>
             {/* -----Description----- */}
             <div style={{
-                margin: '5px 0 0 0'
+                margin: '5px 0 0 0',
+                fontSize: !matches && '14px',
             }}>
                 Description: {
                     selected?.description !== null ?
@@ -86,6 +106,7 @@ function ItemCard({ selected }) {
             {/* -----Drops----- */}
             {selected?.category === 'treasure' ? <div style={{
                 margin: '5px 0 0 0',
+                fontSize: !matches && '14px',
             }}>
                 Drops: {
                     selected?.drops &&
@@ -99,6 +120,7 @@ function ItemCard({ selected }) {
             </div>
                 : selected?.category === 'monsters' ? <div style={{
                     margin: '5px 0 0 0',
+                    fontSize: !matches && '14px',
                 }}>
                     Drops: {
                         selected?.drops &&
@@ -112,6 +134,7 @@ function ItemCard({ selected }) {
                 </div>
                     : selected?.category === 'creatures' && <div style={{
                         margin: '5px 0 0 0',
+                        fontSize: !matches && '14px',
                         display: selected?.drops !== undefined ? 'block' : 'none'
                     }}>
                         Drops: {

@@ -5,6 +5,7 @@ import { CategoryContext } from "../pages/Homepage";
 import ItemCard from "./ItemCard";
 
 import { theme } from "../utils/theme";
+import { MediaQueryContext } from "../App";
 
 function MainMenu() {
     const [categories, category] = useContext(CategoryContext)
@@ -33,18 +34,31 @@ function MainMenu() {
 
     }, [category, categories])
 
+    const [matches, setMatches, breakPoint] = useContext(MediaQueryContext)
+
+    useEffect(() => {
+        window.matchMedia(breakPoint)
+            .addEventListener('change', (event) => {
+                setMatches(event.matches)
+            })
+    })
+
     return (
         <div style={{
-            padding: '5px 100px',
+            padding: matches ? '5px 60px' : '5px 15px',
             backgroundColor: `${theme.color.black}AA`,
             display: 'flex',
+            flexDirection: matches ? 'row' : 'column-reverse'
         }}>
             <div style={{
-                height: '70vh',
-                width: '60%',
+                height: matches && '70vh',
+                width: matches && '60%',
                 overflow: 'auto',
                 display: 'flex',
-                flexWrap: 'wrap'
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                paddingTop: '10px',
+                borderTop: !matches && `1px solid ${theme.color.white}77`
             }}>
                 {menu.map((item) => {
                     return <img
@@ -52,8 +66,8 @@ function MainMenu() {
                         alt="item"
                         src={item.image}
                         style={{
-                            width: '100px',
-                            height: '100px',
+                            width: matches ? '100px' : '60px',
+                            height: matches ? '100px' : '60px',
                             padding: '3px',
                             cursor: 'pointer',
                             border: selected?.id === item?.id ? `3px solid ${theme.color.white}` : `3px solid ${theme.color.white}00`

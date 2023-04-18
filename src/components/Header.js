@@ -26,13 +26,13 @@ function Header() {
             alignItems: 'center',
             justifyContent: matches ? 'space-between' : 'center',
             padding: '0 50px',
-            marginBottom: matches ? '70px' : '40px'
+            marginBottom: matches ? '70px' : '20px'
         }}>
             <div style={{
                 display: matches ? 'block' : 'none'
             }}>
                 {heartValues.map((heart) => {
-                    if (heart != 0) {
+                    if (heart !== 0) {
                         return <FavoriteIcon key={heart} sx={{ color: theme.color.red }} />
                     } else {
                         return <FavoriteIcon key={heart} sx={{ color: theme.color.brown }} />
