@@ -31,30 +31,39 @@ function ItemCard({ selected }) {
                 margin: '5px 0 0 0',
                 gap: '10px',
             }}>
-                <div className='statusBox' style={{
-                    display: selected?.category === 'equipment' ? 'block' : 'none'
-                }}>Atk: {
-                        selected?.attack !== null ?
-                            selected?.attack
-                            : 'None'
-                    }</div>
-                <div className='statusBox' style={{
-                    display: selected?.category === 'equipment' ? 'block' : 'none'
-                }}>Def: {
+                {selected?.category === 'equipment' &&
+                    <div className='statusBox'>
+                        Attack: {
+                            selected?.attack !== null ?
+                                selected?.attack
+                                : 'None'
+                        }</div>}
+                {selected?.category === 'equipment' && <div className='statusBox'>
+                    Defense: {
                         selected?.defense !== null ?
                             selected?.defense
                             : 'None'
-                    }</div>
-                <div className='statusBox' style={{
-                    display: selected?.category === 'materials' ? 'block' : 'none'
+                    }</div>}
+                {selected?.category === 'materials' && <div className='statusBox'>
+                    Effect: {
+                        selected?.cooking_effect !== '' ?
+                            capitalize(selected?.cooking_effect)
+                            : 'None'
+                    }</div>}
+                {selected?.category === 'materials' && <div className='statusBox'>
+                    Recovery: {selected?.hearts_recovered} ♥
+                </div>}
+                {selected?.category === 'creatures' && <div className='statusBox' style={{
+                    display: selected?.cooking_effect !== undefined ? 'block' : 'none'
                 }}>Effect: {
                         selected?.cooking_effect !== '' ?
                             capitalize(selected?.cooking_effect)
                             : 'None'
-                    }</div>
-                <div className='statusBox' style={{
-                    display: selected?.category === 'materials' ? 'block' : 'none'
-                }}>Recovery: {selected?.hearts_recovered} ♥</div>
+                    }</div>}
+                {selected?.category === 'creatures' && <div className='statusBox' style={{
+                    display: selected?.hearts_recovered !== undefined ? 'block' : 'none'
+                }}>Recovery: {selected?.hearts_recovered} ♥
+                </div>}
             </div>
             {/* -----Location----- */}
             <div style={{
@@ -71,19 +80,32 @@ function ItemCard({ selected }) {
             }}>
                 Description: {
                     selected?.description !== null ?
-                        selected?.description :
-                        'Unknown'
+                        selected?.description
+                        : 'Unknown'
                 }</div>
             {/* -----Treasure Drops----- */}
-            <div style={{
+            {selected?.category === 'treasure' && <div style={{
                 margin: '5px 0 0 0',
-                display: selected?.category === 'treasure' ? 'block' : 'none'
+            }}>
+                Drops: {capitalize(selected?.drops.join(' ')).split(' ').join(', ')}
+            </div>}
+            {/* -----Creature Drops----- */}
+            {selected?.category === 'creatures' && <div style={{
+                margin: '5px 0 0 0',
+                display: selected?.drops !== undefined ? 'block' : 'none'
             }}>
                 Drops: {
-                    selected?.drops !== undefined ?
-                        capitalize(selected?.drops.join(' ')).split(' ').join(', ')
-                        : ''
-                }</div>
+                    selected?.drops ?
+                        selected?.drops.map((drop) => {
+                            if (selected?.drops.indexOf(drop) === selected?.drops.length - 1) {
+                                return capitalize(drop)
+                            } else {
+                                return `${capitalize(drop)}, `
+                            }
+                        })
+                        : 'None'
+                }
+            </div>}
         </div>
     )
 }
