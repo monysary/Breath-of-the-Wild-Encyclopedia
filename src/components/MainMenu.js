@@ -5,7 +5,7 @@ import { CategoryContext } from "../pages/Homepage";
 import ItemCard from "./ItemCard";
 
 function MainMenu() {
-    const [categories, category, setCategory] = useContext(CategoryContext)
+    const [categories, category] = useContext(CategoryContext)
     const [menu, setMenu] = useState([])
 
     useEffect(() => {
@@ -26,7 +26,7 @@ function MainMenu() {
 
         BOTWData()
 
-    }, [category])
+    }, [category, categories])
 
     return (
         <div style={{
@@ -41,7 +41,7 @@ function MainMenu() {
                 {menu.map((item) => {
                     return <img
                         key={item.id}
-                        alt="image"
+                        alt="item"
                         src={item.image}
                         style={{
                             width: '100px',
