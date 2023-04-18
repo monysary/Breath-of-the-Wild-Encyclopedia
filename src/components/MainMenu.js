@@ -7,6 +7,7 @@ import ItemCard from "./ItemCard";
 function MainMenu() {
     const [categories, category] = useContext(CategoryContext)
     const [menu, setMenu] = useState([])
+    const [selected, setSelected] = useState()
 
     useEffect(() => {
         const BOTWData = async () => {
@@ -16,8 +17,10 @@ function MainMenu() {
                 )
                 if (categories[category] === 'Creatures') {
                     setMenu([...res.data.data.food, ...res.data.data.non_food])
+                    setSelected(res.data.data.food[0])
                 } else {
                     setMenu(res.data.data)
+                    setSelected(res.data.data[0])
                 }
             } catch (err) {
                 console.log(err);
@@ -36,6 +39,7 @@ function MainMenu() {
         }}>
             <div style={{
                 height: '70vh',
+                width: '50%',
                 overflow: 'auto',
             }}>
                 {menu.map((item) => {
@@ -45,12 +49,16 @@ function MainMenu() {
                         src={item.image}
                         style={{
                             width: '100px',
-                            margin: '5px'
+                            margin: '5px',
+                            cursor: 'pointer'
+                        }}
+                        onClick={() => {
+                            setSelected(item)
                         }}
                     />
                 })}
             </div>
-            <ItemCard />
+            <ItemCard selected={selected} />
         </div>
     )
 }

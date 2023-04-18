@@ -1,11 +1,11 @@
 import { capitalize } from "../utils/helpers";
 
-function ItemCard() {
-
-    
+function ItemCard({ selected }) {
     return (
-        <div>
-
+        <div style={{
+            width: '50%'
+        }}>
+            {capitalize(selected?.name)}
         </div>
     )
 }
