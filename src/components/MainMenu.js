@@ -53,6 +53,7 @@ function MainMenu() {
                         src={item.image}
                         style={{
                             width: '100px',
+                            height: '100px',
                             padding: '5px',
                             cursor: 'pointer',
                             border: selected?.id === item?.id ? `3px solid ${theme.color.white}` : 'none'
