@@ -22,6 +22,11 @@ img {
     display: block;
 }
 
+.statusBox {
+    border: 1px solid #fdffe077;
+    padding: 0 8px;
+}
+
 ::-webkit-scrollbar {
     width: 6px;
     height: 0px;

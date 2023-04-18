@@ -2,10 +2,6 @@ import { theme } from '../utils/theme'
 import { capitalize } from "../utils/helpers";
 
 function ItemCard({ selected }) {
-    const statusBox = {
-        border: `1px solid ${theme.color.white}77`,
-        padding: '0 8px',
-    }
 
     return (
         <div style={{
@@ -30,28 +26,54 @@ function ItemCard({ selected }) {
             }}>
                 {capitalize(selected?.name)}
             </div>
-            {/* -----Equipment Attack/Defense----- */}
+            {/* -----Status----- */}
             <div className='flexAlignCenter' style={{
                 margin: '5px 0 0 0',
                 gap: '10px',
-                display: selected?.category === 'equipment' ? 'flex' : 'none'
             }}>
-                <div style={statusBox}>Atk: {selected?.attack}</div>
-                <div style={statusBox}>Def: {selected?.defense}</div>
+                <div className='statusBox' style={{
+                    display: selected?.category === 'equipment' ? 'block' : 'none'
+                }}>Atk: {
+                        selected?.attack !== null ?
+                            selected?.attack
+                            : 'None'
+                    }</div>
+                <div className='statusBox' style={{
+                    display: selected?.category === 'equipment' ? 'block' : 'none'
+                }}>Def: {
+                        selected?.defense !== null ?
+                            selected?.defense
+                            : 'None'
+                    }</div>
+                <div className='statusBox' style={{
+                    display: selected?.category === 'materials' ? 'block' : 'none'
+                }}>Effect: {
+                        selected?.cooking_effect !== '' ?
+                            capitalize(selected?.cooking_effect)
+                            : 'None'
+                    }</div>
+                <div className='statusBox' style={{
+                    display: selected?.category === 'materials' ? 'block' : 'none'
+                }}>Recovery: {selected?.hearts_recovered} ♥</div>
             </div>
-            {/* -----Equipment Location----- */}
+            {/* -----Location----- */}
             <div style={{
                 margin: '5px 0 0 0',
-                display: selected?.category === 'equipment' ? 'flex' : 'none'
             }}>
-                Location: {selected?.common_locations != null ? selected?.common_locations.join(', ') : 'Unknown'}
-            </div>
+                Location: {
+                    selected?.common_locations !== null ?
+                        selected?.common_locations.join(', ')
+                        : 'Unknown'
+                }</div>
             {/* -----Description----- */}
             <div style={{
                 margin: '5px 0 0 0'
             }}>
-                Description: {selected?.description != null ? selected?.description : 'Unknown'}
-            </div>
+                Description: {
+                    selected?.description !== null ?
+                        selected?.description :
+                        'Unknown'
+                }</div>
         </div>
     )
 }
