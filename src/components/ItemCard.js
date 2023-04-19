@@ -31,8 +31,8 @@ function ItemCard({ selected }) {
             }}>
                 <img alt="item" src={selected?.image} style={{
                     margin: '0 auto',
-                    width: !matches && '200px',
-                    height: !matches && '200px'
+                    width: !matches && '170px',
+                    height: !matches && '170px'
                 }} />
             </div>
             {/* -----Name----- */}

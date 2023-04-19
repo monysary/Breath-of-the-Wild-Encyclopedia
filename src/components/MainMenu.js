@@ -51,11 +51,12 @@ function MainMenu() {
             flexDirection: matches ? 'row' : 'column-reverse'
         }}>
             <div style={{
-                height: matches && '70vh',
+                height: matches ? '70vh' : '150px',
                 width: matches && '60%',
                 overflow: 'auto',
                 display: 'flex',
-                justifyContent: 'center',
+                flexDirection: matches ? 'row' : 'column',
+                justifyContent: matches ? 'center' : 'left',
                 flexWrap: 'wrap',
                 paddingTop: '10px',
                 borderTop: !matches && `1px solid ${theme.color.white}77`
