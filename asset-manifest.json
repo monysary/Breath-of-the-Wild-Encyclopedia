@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Breath-of-the-Wild-Encyclopedia/static/css/main.8ee933c2.css",
+    "main.js": "/Breath-of-the-Wild-Encyclopedia/static/js/main.9092c5b1.js",
+    "static/media/The-Art-of-The-Legend-of-Zelda-Breath-of-the-Wild-3.jpg": "/Breath-of-the-Wild-Encyclopedia/static/media/The-Art-of-The-Legend-of-Zelda-Breath-of-the-Wild-3.d64309420b89552d9192.jpg",
+    "static/media/green-rupee.png": "/Breath-of-the-Wild-Encyclopedia/static/media/green-rupee.90fd5c644c100b7404b3.png",
+    "index.html": "/Breath-of-the-Wild-Encyclopedia/index.html",
+    "main.8ee933c2.css.map": "/Breath-of-the-Wild-Encyclopedia/static/css/main.8ee933c2.css.map",
+    "main.9092c5b1.js.map": "/Breath-of-the-Wild-Encyclopedia/static/js/main.9092c5b1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8ee933c2.css",
+    "static/js/main.9092c5b1.js"
+  ]
+}
