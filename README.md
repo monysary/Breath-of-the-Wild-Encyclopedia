@@ -1,1 +1,2 @@
-# Breath-of-the-Wild-Encyclopedia
+# Breath of the Wild Encyclopedia
+
